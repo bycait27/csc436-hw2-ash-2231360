@@ -1,0 +1,134 @@
+====================================================================================
+$ dig +trace depaul.edu A
+====================================================================================
+
+; <<>> DiG 9.16.28 <<>> +trace depaul.edu A
+;; global options: +cmd
+.                       461524  IN      NS      i.root-servers.net.
+.                       461524  IN      NS      j.root-servers.net.
+.                       461524  IN      NS      k.root-servers.net.
+.                       461524  IN      NS      l.root-servers.net.
+.                       461524  IN      NS      m.root-servers.net.
+.                       461524  IN      NS      a.root-servers.net.
+.                       461524  IN      NS      b.root-servers.net.
+.                       461524  IN      NS      c.root-servers.net.
+.                       461524  IN      NS      d.root-servers.net.
+.                       461524  IN      NS      e.root-servers.net.
+.                       461524  IN      NS      f.root-servers.net.
+.                       461524  IN      NS      g.root-servers.net.
+.                       461524  IN      NS      h.root-servers.net.
+.                       461524  IN      RRSIG   NS 8 0 518400 20261005050000 20260922040000 57780 . 0kqFX2MNIWkyCHl8NECVfQXKTbb1bCzd74tYvCySk6jWoer/ADtfByD+ 7NZiCMLpePq7q6ANmRFbQ660IO6W06c9oQIEnTIGqmvz/PRdf4tcPc+o sj4E+AtOCmoRItVNI/RntXTfyej4IY6Mo/QgCRQsoUoFaEPhoN/arw3S NKOzNs5V3NBbNo1+JTTrirjh7jknOwFHttlGlgvuGtoBq4cYZ6SkSIVg YymYyCaTGsoh7rTFP+7iSJun7x7DmKhOXTUF0RMccGY9haiXL4HEciu8 EvnwIWqyVPufpZslOHPkd8yI9O5izZsbAvPvCIKNYHFgNxyV8C2+c5dz gX0y7w==
+;; Received 1097 bytes from 75.75.75.75#53(75.75.75.75) in 14 ms
+
+edu.                    172800  IN      NS      a.edu-servers.net.
+edu.                    172800  IN      NS      b.edu-servers.net.
+edu.                    172800  IN      NS      c.edu-servers.net.
+edu.                    172800  IN      NS      d.edu-servers.net.
+edu.                    172800  IN      NS      e.edu-servers.net.
+edu.                    172800  IN      NS      f.edu-servers.net.
+edu.                    172800  IN      NS      g.edu-servers.net.
+edu.                    172800  IN      NS      h.edu-servers.net.
+edu.                    172800  IN      NS      i.edu-servers.net.
+edu.                    172800  IN      NS      j.edu-servers.net.
+edu.                    172800  IN      NS      k.edu-servers.net.
+edu.                    172800  IN      NS      l.edu-servers.net.
+edu.                    172800  IN      NS      m.edu-servers.net.
+edu.                    86400   IN      DS      35663 13 2 A2E1614291831A4746B5AC52B4B345357687271E85353082741F1CF3 D06A4C1D
+edu.                    86400   IN      RRSIG   DS 8 1 86400 20261005170000 20260922160000 57780 . Bsxj+nJMuDCGcJf35TmU61OwvjOeTLIvzfqlUFTQH3+lWX3WHY6B0/bZ SM/eHPVRtl34i2BSkCmJYy4WPs7+UqSGMAI01yz5IDDWXKUYnsQAQyN6 luNoXi6MyAh58YisAPG0ix/R4zf1TlvU4MjCzlIxEomf00NarMjIFa26 I8qYyNDJHFY9RRMe83katFZAS3Cp5pIkYY4f+MEyYSzlFDbTEHfc+lfk Jnt/FscxZKU9swcJdNZYVfdg+cOHSFEJXrwGlN4BE5dce5X0HZxJLxeu Naanu1Z93Y+u1A6Ft3W/OC9W7pVtdl+zxPJ2GbMFlQB7POTYdQG7tclB Wnza0Q==
+;; Received 1169 bytes from 2001:500:1::53#53(h.root-servers.net) in 35 ms
+
+depaul.edu.             172800  IN      NS      ns2.depaul.edu.
+depaul.edu.             172800  IN      NS      ns1.depaul.edu.
+depaul.edu.             172800  IN      NS      ns4.depaul.edu.
+depaul.edu.             172800  IN      NS      ns3.depaul.edu.
+9DHS4EP5G85PF9NUFK06HEK0O48QGK77.edu. 900 IN NSEC3 1 1 0 - 9IRJMUEL398SEJH8CRDIK2H2K85K5243 NS SOA RRSIG DNSKEY NSEC3PARAM
+9DHS4EP5G85PF9NUFK06HEK0O48QGK77.edu. 900 IN RRSIG NSEC3 13 2 900 20260929033834 20260922022834 6705 edu. 8DR/c7A7HNbWdDxOrEUk1nmGMvDpJKnl7E0Sax9Q04oW5gLUFEKXbCLb jPJm3x1q5T4+suwgSmWg1UplL0eOgw==
+QCPFMOBJDP7PFAOM63VTFVATPFNKL9FK.edu. 900 IN NSEC3 1 1 0 - QK6M0S7V1SKN8MFIVRVL3AAD68OJPE85 NS DS RRSIG
+QCPFMOBJDP7PFAOM63VTFVATPFNKL9FK.edu. 900 IN RRSIG NSEC3 13 2 900 20260927051133 20260920040133 6705 edu. 11K7iINDiRhyUqKq4BQSFTQeZgNjlejQ945mQBoPaXz9aDj1nLshQs+b ya9DtIM+zw7K9O9Gnsuh45FezRKYtw==
+;; Received 532 bytes from 2001:503:d2d::30#53(k.edu-servers.net) in 30 ms
+
+depaul.edu.             86400   IN      A       64.239.109.1
+depaul.edu.             14400   IN      NS      ns1.depaul.edu.
+depaul.edu.             14400   IN      NS      ns4.depaul.edu.
+depaul.edu.             14400   IN      NS      ns2.depaul.edu.
+depaul.edu.             14400   IN      NS      ns3.depaul.edu.
+;; Received 219 bytes from 168.61.185.108#53(ns4.depaul.edu) in 27 ms
+
+====================================================================================
+
+Root (.): 75.75.75.75 answered with a referral, indicated by the list of root nameservers and NS records.
+
+Top-level domain (.edu): h.root-servers.net answered with a referral, indicated by the list of .edu TLD 
+nameservers and NS records.
+
+Second-level domain (depaul.edu): k.edu-servers.net answered with a referral, indicated by DePaul's authoritative 
+nameservers (ns1-ns4) and NS records.
+
+Authoritative answer (depaul.edu): ns4.depaul.edu answered with an answer, indicated by the requested A record 
+containing the IP address 64.239.109.1.
+
+====================================================================================
+$ dig +trace www.depaul.edu A
+====================================================================================
+
+; <<>> DiG 9.16.28 <<>> +trace www.depaul.edu A
+;; global options: +cmd
+.                       459151  IN      NS      c.root-servers.net.
+.                       459151  IN      NS      d.root-servers.net.
+.                       459151  IN      NS      e.root-servers.net.
+.                       459151  IN      NS      f.root-servers.net.
+.                       459151  IN      NS      g.root-servers.net.
+.                       459151  IN      NS      h.root-servers.net.
+.                       459151  IN      NS      i.root-servers.net.
+.                       459151  IN      NS      j.root-servers.net.
+.                       459151  IN      NS      k.root-servers.net.
+.                       459151  IN      NS      l.root-servers.net.
+.                       459151  IN      NS      m.root-servers.net.
+.                       459151  IN      NS      a.root-servers.net.
+.                       459151  IN      NS      b.root-servers.net.
+.                       459151  IN      RRSIG   NS 8 0 518400 20261004170000 20260921160000 57780 . VxKaqUjojsf1hTGdkUAuxj38qKjdXcLisGZGYXjTcS82aDtMDpQF+8Cl RqUpAi1WtOBuPtdW4Qn61E78SIVtXucjOFmtCw37q/HIQ88+EBQyoHJz 8hydCgOAnd4cOEJYYBdyvXXbXD3rj24uGEb6V+FU/1nNWFo/lqRqIdhq R2GdEufW8V2jB6ggEroLGNoa9Y6l6QyRKmD4TpLF5IabW8QF+QOHQXUc OOrCEHsB9zZoPFX/0bTkmJVUfF1RYTyhovnbB0gv5NuRoPh5/gqtuudw 7Rtwizvptxb1cLawPNbrZF3/Fz+cKLbN6VIV9k1nuoBPYeFfccM9/W/J 3K5yMg==
+;; Received 1097 bytes from 75.75.75.75#53(75.75.75.75) in 12 ms
+
+edu.                    172800  IN      NS      c.edu-servers.net.
+edu.                    172800  IN      NS      k.edu-servers.net.
+edu.                    172800  IN      NS      f.edu-servers.net.
+edu.                    172800  IN      NS      i.edu-servers.net.
+edu.                    172800  IN      NS      b.edu-servers.net.
+edu.                    172800  IN      NS      g.edu-servers.net.
+edu.                    172800  IN      NS      e.edu-servers.net.
+edu.                    172800  IN      NS      a.edu-servers.net.
+edu.                    172800  IN      NS      d.edu-servers.net.
+edu.                    172800  IN      NS      h.edu-servers.net.
+edu.                    172800  IN      NS      j.edu-servers.net.
+edu.                    172800  IN      NS      m.edu-servers.net.
+edu.                    172800  IN      NS      l.edu-servers.net.
+edu.                    86400   IN      DS      35663 13 2 A2E1614291831A4746B5AC52B4B345357687271E85353082741F1CF3 D06A4C1D
+edu.                    86400   IN      RRSIG   DS 8 1 86400 20261005170000 20260922160000 57780 . Bsxj+nJMuDCGcJf35TmU61OwvjOeTLIvzfqlUFTQH3+lWX3WHY6B0/bZ SM/eHPVRtl34i2BSkCmJYy4WPs7+UqSGMAI01yz5IDDWXKUYnsQAQyN6 luNoXi6MyAh58YisAPG0ix/R4zf1TlvU4MjCzlIxEomf00NarMjIFa26 I8qYyNDJHFY9RRMe83katFZAS3Cp5pIkYY4f+MEyYSzlFDbTEHfc+lfk Jnt/FscxZKU9swcJdNZYVfdg+cOHSFEJXrwGlN4BE5dce5X0HZxJLxeu Naanu1Z93Y+u1A6Ft3W/OC9W7pVtdl+zxPJ2GbMFlQB7POTYdQG7tclB Wnza0Q==
+;; Received 1201 bytes from 2001:7fe::53#53(i.root-servers.net) in 29 ms
+
+depaul.edu.             172800  IN      NS      ns2.depaul.edu.
+depaul.edu.             172800  IN      NS      ns1.depaul.edu.
+depaul.edu.             172800  IN      NS      ns4.depaul.edu.
+depaul.edu.             172800  IN      NS      ns3.depaul.edu.
+9DHS4EP5G85PF9NUFK06HEK0O48QGK77.edu. 900 IN NSEC3 1 1 0 - 9IRJMUEL398SEJH8CRDIK2H2K85K5243 NS SOA RRSIG DNSKEY NSEC3PARAM
+9DHS4EP5G85PF9NUFK06HEK0O48QGK77.edu. 900 IN RRSIG NSEC3 13 2 900 20260929033834 20260922022834 6705 edu. 8DR/c7A7HNbWdDxOrEUk1nmGMvDpJKnl7E0Sax9Q04oW5gLUFEKXbCLb jPJm3x1q5T4+suwgSmWg1UplL0eOgw==
+QCPFMOBJDP7PFAOM63VTFVATPFNKL9FK.edu. 900 IN NSEC3 1 1 0 - QK6M0S7V1SKN8MFIVRVL3AAD68OJPE85 NS DS RRSIG
+QCPFMOBJDP7PFAOM63VTFVATPFNKL9FK.edu. 900 IN RRSIG NSEC3 13 2 900 20260927051133 20260920040133 6705 edu. 11K7iINDiRhyUqKq4BQSFTQeZgNjlejQ945mQBoPaXz9aDj1nLshQs+b ya9DtIM+zw7K9O9Gnsuh45FezRKYtw==
+;; Received 536 bytes from 2001:500:856e::30#53(d.edu-servers.net) in 30 ms
+
+www.depaul.edu.         86400   IN      CNAME   22b8cde06cfddd89.vercel-dns-013.com.
+;; Received 120 bytes from 140.192.239.2#53(ns2.depaul.edu) in 15 ms
+
+====================================================================================
+
+Root (.): 75.75.75.75 answered with a referral, indicated by the list of root nameservers and NS records.
+
+Top-level domain (.edu): i.root-servers.net answered with a referral, indicated by the list of .edu TLD 
+nameservers and NS records.
+
+Second-level domain (depaul.edu): d.edu-servers.net answered with a referral, indicated by DePaul's authoritative 
+nameservers (ns1-ns4) and NS records.
+
+Authoritative answer (www.depaul.edu): ns2.depaul.edu answered with an answer, indicated by the CNAME record (not 
+the requested A record) containing the address 22b8cde06cfddd89.vercel-dns-013.com (www.depaul.edu is mapped 
+to another domain name).
