@@ -55,19 +55,6 @@ depaul.edu.             14400   IN      NS      ns3.depaul.edu.
 ;; Received 219 bytes from 168.61.185.108#53(ns4.depaul.edu) in 27 ms
 
 ====================================================================================
-
-Root (.): 75.75.75.75 answered with a referral, indicated by the list of root nameservers and NS records.
-
-Top-level domain (.edu): h.root-servers.net answered with a referral, indicated by the list of .edu TLD 
-nameservers and NS records.
-
-Second-level domain (depaul.edu): k.edu-servers.net answered with a referral, indicated by DePaul's authoritative 
-nameservers (ns1-ns4) and NS records.
-
-Authoritative answer (depaul.edu): ns4.depaul.edu answered with an answer, indicated by the requested A record 
-containing the IP address 64.239.109.1.
-
-====================================================================================
 $ dig +trace www.depaul.edu A
 ====================================================================================
 
@@ -120,15 +107,3 @@ www.depaul.edu.         86400   IN      CNAME   22b8cde06cfddd89.vercel-dns-013.
 ;; Received 120 bytes from 140.192.239.2#53(ns2.depaul.edu) in 15 ms
 
 ====================================================================================
-
-Root (.): 75.75.75.75 answered with a referral, indicated by the list of root nameservers and NS records.
-
-Top-level domain (.edu): i.root-servers.net answered with a referral, indicated by the list of .edu TLD 
-nameservers and NS records.
-
-Second-level domain (depaul.edu): d.edu-servers.net answered with a referral, indicated by DePaul's authoritative 
-nameservers (ns1-ns4) and NS records.
-
-Authoritative answer (www.depaul.edu): ns2.depaul.edu answered with an answer, indicated by the CNAME record (not 
-the requested A record) containing the address 22b8cde06cfddd89.vercel-dns-013.com (www.depaul.edu is mapped 
-to another domain name).

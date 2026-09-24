@@ -5,11 +5,6 @@ $ dig "@1.1.1.1" depaul.edu SOA +noall +answer
 depaul.edu.             14400   IN      SOA     ns1.depaul.edu. networks.depaul.edu. 10 14400 1800 1209600 900
 
 ====================================================================================
-
-The last field of the SOA (900) is the minimum negative-cache TTL. This tells the operator that 
-there was a failed DNS lookup and it won't keep trying the server again and again.
-
-====================================================================================
 $ dig "@1.1.1.1" www.depaul.edu A +noall +answer
 ====================================================================================
 
@@ -18,21 +13,10 @@ www.depaul.edu.         75976   IN      CNAME   22b8cde06cfddd89.vercel-dns-013.
 22b8cde06cfddd89.vercel-dns-013.com. 300 IN A   64.239.123.1
 
 ====================================================================================
-
-www.depaul.edu acts as an alias and points to 22b8cde06cfddd89.vercel-dns-013.com. The 
-CNAME has a long TTL because the alias rarely changes, but the target A TTLs are shorter 
-because the host servers can change.
-
-====================================================================================
 $ dig "@1.1.1.1" depaul.edu MX +noall +answer
 ====================================================================================
 
 depaul.edu.             394     IN      MX      0 depaul-edu.mail.protection.outlook.com.
-
-====================================================================================
-
-Mail delivery uses a hostname instead of a raw IP address because A records already 
-handle this. MX records allow mail routing to adapt to any changes in the A record.
 
 ====================================================================================
 $ dig "@1.1.1.1" depaul.edu TXT +noall +answer
@@ -61,12 +45,6 @@ depaul.edu.             86400   IN      TXT     "FFC6CEA7B027B2DB5D3A66000DDA89B
 depaul.edu.             86400   IN      TXT     "d365mktkey=78j6ucxmbwnam324kqwct83gn"
 
 ====================================================================================
-
-I am able to recognize the third party verifications for Zoom, autodesk, google, sitecore, 
-apple, atlassian, etc. Additionally, these all have long TTLs, allowing for fewer 
-future queries. 
-
-====================================================================================
 $ dig "@1.1.1.1" github.com CAA +noall +answer
 ====================================================================================
 
@@ -77,13 +55,6 @@ github.com.             3600    IN      CAA     0 issue "sectigo.com"
 github.com.             3600    IN      CAA     0 issuewild "digicert.com"
 github.com.             3600    IN      CAA     0 issuewild "letsencrypt.org"
 github.com.             3600    IN      CAA     0 issuewild "sectigo.com"
-
-====================================================================================
-
-github.com allows standard certificates from digicert.com, globalsign.com, letsencrypt.org, 
-and sectigo.com. It also allows wildcard certificates for digicert.com, letsencrypt.org, and 
-sectigo.com. From my output, it looks like there are no restrictions listed, as they all have a 
-0 flag. 
 
 ====================================================================================
 $ dig "@1.1.1.1" depaul.edu CAA
@@ -110,7 +81,3 @@ depaul.edu.             900     IN      SOA     ns1.depaul.edu. networks.depaul.
 ;; MSG SIZE  rcvd: 88
 
 ====================================================================================
-
-depaul.edu's NODDATA result (indicated by ANSWER: 0 and STATUS: NOERROR) means that the 
-domain name exists but no CAA records have been configured. There are no restrictions on 
-certificate issuance. 
