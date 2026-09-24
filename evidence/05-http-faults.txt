@@ -1,0 +1,175 @@
+=====================================================================================================
+Fault 1A - known virtual host succeeds 
+=====================================================================================================
+
+Send Request:
+
+HTTP/1.1 200 OK
+Server: campuspulse-fault-lab/1.0
+Content-Type: application/json
+Content-Length: 39
+Vary: Accept-Encoding
+Date: Thu, 24 Sep 2026 02:31:06 GMT
+Connection: close
+
+{
+  "status": "ok",
+  "service": "campuspulse"
+}
+
+fault1 GET /healthz Host=status.campuspulse.example -> 200
+
+$ curl.exe --noproxy '*' -i --max-time 5 http://127.0.0.1:8081/healthz -H "Host: status.campuspulse.example"
+
+HTTP/1.1 200 OK
+Server: campuspulse-fault-lab/1.0
+Content-Type: application/json
+Content-Length: 39
+Vary: Accept-Encoding
+Date: Thu, 24 Sep 2026 02:51:14 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"status":"ok","service":"campuspulse"}
+
+fault1 GET /healthz Host=status.campuspulse.example -> 200
+
+=====================================================================================================
+Fault 1B - same socket, unknown Host fails
+=====================================================================================================
+
+Send Request:
+
+HTTP/1.1 404 Not Found
+Server: campuspulse-fault-lab/1.0
+Content-Type: text/plain
+Content-Length: 123
+X-Served-By: shared-edge-7
+Date: Thu, 24 Sep 2026 02:33:15 GMT
+Connection: close
+
+404 Not Found
+
+This shared edge has no site configured for the requested hostname.
+Requested Host: www.campuspulse.example
+
+fault1 GET /healthz Host=www.campuspulse.example -> 404
+
+=====================================================================================================
+Fault 2A - redirect loop at the site root
+=====================================================================================================
+
+Send Request:
+
+fault2 GET / Host=campuspulse.example -> 301
+
+$ curl.exe --noproxy '*' -i http://127.0.0.1:8082/ -H "Host: campuspulse.example"
+
+HTTP/1.1 301 Moved Permanently
+Server: campuspulse-fault-lab/1.0
+Location: http://www.campuspulse.example:8082/
+Content-Length: 0
+Date: Thu, 24 Sep 2026 02:59:45 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+fault2 GET / Host=campuspulse.example -> 301
+
+=====================================================================================================
+Fault 2B - Legacy POST receives a 302 redirect 
+=====================================================================================================
+
+Send Request:
+
+HTTP/1.1 302 Found
+Server: campuspulse-fault-lab/1.0
+Location: http://campuspulse.example/api/incidents
+Content-Length: 0
+Date: Thu, 24 Sep 2026 02:37:38 GMT
+Connection: close
+
+fault2 POST /legacy/incidents Host=campuspulse.example -> 302
+
+=====================================================================================================
+Fault 2C - target endpoint accepts POST directly 
+=====================================================================================================
+
+Send Request:
+
+HTTP/1.1 201 Created
+Server: campuspulse-fault-lab/1.0
+Content-Type: application/json
+Content-Length: 16
+Date: Thu, 24 Sep 2026 02:40:19 GMT
+Connection: close
+
+{
+  "created": true
+}
+
+fault2 POST /api/incidents Host=campuspulse.example -> 201
+
+=====================================================================================================
+Fault 3A - proxy path loops because the app never sees X-Forwarded-Proto 
+=====================================================================================================
+
+Send Request:
+
+fault3-1b GET /healthz Host=campuspulse.example -> 301
+
+$ curl.exe --noproxy '*' -i http://127.0.0.1:8084/healthz -H "Host: campuspulse.example"
+
+HTTP/1.1 301 Moved Permanently
+server: campuspulse-fault-lab/1.0
+x-app-saw-xfp: (absent)
+x-app-saw-forwarded-headers: x-forwarded-protocol, x-forwarded-for, x-forwarded-host
+location: http://campuspulse.example/healthz
+content-length: 0
+date: Thu, 24 Sep 2026 03:08:47 GMT
+connection: keep-alive
+keep-alive: timeout=5
+x-proxy: campuspulse-lb/1.0 (terminates TLS)
+
+=====================================================================================================
+Fault 3B - app direct, no forwarded protocol
+=====================================================================================================
+
+Send Request:
+
+fault3 GET /healthz Host=campuspulse.example -> 301
+
+$ curl.exe --noproxy '*' -i http://127.0.0.1:8083/healthz -H "Host: campuspulse.example"
+
+HTTP/1.1 301 Moved Permanently
+Server: campuspulse-fault-lab/1.0
+X-App-Saw-XFP: (absent)
+X-App-Saw-Forwarded-Headers: (none)
+Location: https://campuspulse.example/healthz
+Content-Length: 0
+Date: Thu, 24 Sep 2026 03:09:09 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+=====================================================================================================
+Fault 3C - app direct with the one header it expected 
+=====================================================================================================
+
+Send Request:
+
+HTTP/1.1 200 OK
+Server: campuspulse-fault-lab/1.0
+X-App-Saw-XFP: https
+X-App-Saw-Forwarded-Headers: x-forwarded-proto
+Content-Type: application/json
+Content-Length: 29
+Date: Thu, 24 Sep 2026 02:43:39 GMT
+Connection: close
+
+{
+  "status": "ok",
+  "secure": true
+}
+
+fault3 GET /healthz Host=campuspulse.example -> 200
+
+=====================================================================================================
